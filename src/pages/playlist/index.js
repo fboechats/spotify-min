@@ -12,6 +12,7 @@ import Loading from '../../components/Loading';
 
 import ClockIcon from '../../assets/images/clock.svg';
 import PlusIcon from '../../assets/images/plus.svg';
+import PlayIcon from '../../assets/images/play.svg';
 
 class Playlist extends Component {
   static propTypes = {
@@ -95,7 +96,7 @@ class Playlist extends Component {
           <tbody>
             {!playlist.songs ? (
               <tr>
-                <td colspan={5}>Nenhuma música cadastrada</td>
+                <td colSpan={5}>Nenhuma música cadastrada</td>
               </tr>
             ) : (
               playlist.songs.map(song => (
@@ -107,7 +108,7 @@ class Playlist extends Component {
                   playing={this.props.currentSong && this.props.currentSong.id === song.id}
                 >
                   <td>
-                    <img src={PlusIcon} alt="Adicionar" />
+                    <img style={{ width: '24px', height: '24px', cursor: 'pointer', verticalAlign: 'middle' }} onClick={() => this.props.loadSong(song, playlist.songs)} src={PlayIcon} alt="Play" />
                   </td>
                   <td>{song.title}</td>
                   <td>{song.author}</td>
